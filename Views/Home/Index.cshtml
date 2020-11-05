@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Person>
+
+@{ ViewData["Title"] = "Home Page"; }
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <h1>Grid</h1>
+
+  
+    <input id="GridSearch" />
+
+    @Html.AjaxGrid(Url.Action("Index"))
+
+    <a href="@(Url.Action("ExportIndex") + ViewContext.HttpContext.Request.QueryString)">Export</a>
+
+    <script>
+    document.getElementById('GridSearch').addEventListener('input', function () {
+            var grid = new MvcGrid(document.querySelector('.mvc-grid'));
+            grid.query.set('search', this.value);
+
+            grid.reload();
+        });</script>
+
+
+
+</div>

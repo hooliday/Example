@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Person>
+@* Should only include grid declaration *@
+
+@(Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.FirstName).Titled("Firstname");
+        columns.Add(model => model.LastName).Titled("Lastname");
+        columns.Add(model => model.Age).Titled("Age");
+    })
+    .Empty("No data found")
+    .Sortable()
+    .Filterable()
+)
